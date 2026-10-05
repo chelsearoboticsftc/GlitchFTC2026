@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.indexer;
+import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
@@ -15,6 +16,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.intake;
 public class exampleTeleOpFieldCentric extends OpMode {
 private intake intake;
 private indexer indexer;
+private shooter shooter;
     private Follower follower;
     @Override
     public void start(){
@@ -26,6 +28,7 @@ private indexer indexer;
         follower = Constants.create(hardwareMap);
         intake = new intake(hardwareMap);
         indexer = new indexer(hardwareMap);
+        shooter = new shooter(hardwareMap);
     }
     @Override
     public void loop() {
