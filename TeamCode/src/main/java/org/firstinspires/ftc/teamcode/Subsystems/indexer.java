@@ -9,10 +9,11 @@ public class indexer {
 
     public indexer(HardwareMap hardwareMap) {
 
-        this.indexer = hardwareMap.get(DcMotorEx.class,"indexer");
+        this.indexer = hardwareMap.get(DcMotorEx.class, "indexer");
         indexer.setZeroPowerBehavior(indexerConstants.INDEXER_ZERO_POWER_BEHAVIOR);
         indexer.setDirection(indexerConstants.DIRECTION);
     }
 
-    public void setIndexer(double power) {indexer.setPower(power);}
+    public void indexerSetPower(double power) {indexer.setPower(power);
+    }
 }
