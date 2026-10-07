@@ -19,6 +19,9 @@ private intake intake;
 private indexer indexer;
 private shooter shooter;
 private linear linear;
+private clawServo clawServo;
+
+
     private Follower follower;
     @Override
     public void start(){
@@ -31,6 +34,8 @@ private linear linear;
         intake = new intake(hardwareMap);
         indexer = new indexer(hardwareMap);
         shooter = new shooter(hardwareMap);
+        linear = new linear(hardwareMap);
+
     }
     @Override
     public void loop() {
@@ -57,8 +62,6 @@ private linear linear;
 
         if (gamepad2.aWasReleased())
             linear.linearSetPower(0);
-
-
 
         if (gamepad2.bWasPressed())
             shooter.shooterSetPower(1);

@@ -7,12 +7,21 @@ public class linear {
     public linear(HardwareMap hardwareMap) {
 
         this.linear = hardwareMap.get(DcMotorEx.class,"linear");
-        linear.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
-        linear.setDirection(shooterConstants.DIRECTION);
+        linear.setZeroPowerBehavior(linearConstants.LINEAR_ZERO_POWER_BEHAVIOR);
+        linear.setDirection(linearConstants.DIRECTION);
 
 
     }
 
     public void linearSetPower(double power) {linear.setPower(power);}
+
+    public void setServoPositionOpen(){
+        clawServo.setPosition CLAWOPEN;
+
+    }
+    public void setServoPositionClosed(){
+        clawServo.setPosition CLAWCLOSED;
+    }
 }
+
 
