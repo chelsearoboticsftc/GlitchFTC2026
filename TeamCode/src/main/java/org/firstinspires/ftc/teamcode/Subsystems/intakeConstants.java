@@ -8,4 +8,11 @@ public class intakeConstants {
     public static final DcMotor.ZeroPowerBehavior INTAKE_ZERO_POWER_BEHAVIOR = DcMotor.ZeroPowerBehavior.FLOAT;
     public static final DcMotor.Direction DIRECTION = DcMotorSimple.Direction.REVERSE;
 
+
+   public void setServoPosition(double position){
+    intakeLiftLeft.setPosition(position);
+
+   }
+
+
 }
