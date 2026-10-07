@@ -13,7 +13,6 @@ import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
 
-
 @TeleOp(name = "RoboCentric TeleOp")
 public class exampleTeleOpFieldCentric extends OpMode {
 private intake intake;
@@ -60,6 +59,12 @@ private linear linear;
             linear.linearSetPower(0);
 
 
+
+        if (gamepad2.bWasPressed())
+            shooter.shooterSetPower(1);
+
+        if (gamepad2.bWasReleased())
+            shooter.shooterSetPower(0);
 
         follower.manual(powers);
         follower.update();
