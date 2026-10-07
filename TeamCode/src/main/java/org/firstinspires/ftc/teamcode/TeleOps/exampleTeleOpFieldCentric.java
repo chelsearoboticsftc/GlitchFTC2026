@@ -50,6 +50,12 @@ private shooter shooter;
         if (gamepad2.yWasReleased())
             indexer.indexerSetPower(0);
 
+        if (gamepad2.bWasPressed())
+            shooter.shooterSetPower(1);
+
+        if (gamepad2.bWasReleased())
+            shooter.shooterSetPower(0);
+
         follower.manual(powers);
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
