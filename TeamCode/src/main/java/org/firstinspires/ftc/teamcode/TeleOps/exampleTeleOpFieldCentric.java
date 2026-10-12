@@ -19,7 +19,7 @@ private intake intake;
 private indexer indexer;
 private shooter shooter;
 private linear linear;
-private clawServo clawServo;
+
 
 
     private Follower follower;
@@ -69,7 +69,19 @@ private clawServo clawServo;
         if (gamepad2.bWasReleased())
             shooter.shooterSetPower(0);
 
-        follower.manual(powers);
+        if(gamepad2.WasPressed())
+            linear.linearSetPower(1);
+
+        if(gamepad2.WasReleased())
+            linear.linearSetPower(0);
+
+        if(gamepad2.WasPressed())
+            intake.intakeSetPower(1);
+
+        if(gamepad2.WasReleased())
+            intake.intakeSetPower(0);
+
+            follower.manual(powers);
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
         telemetry.addData("Robot X", robotPose.x());
