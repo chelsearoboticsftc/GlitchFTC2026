@@ -69,16 +69,16 @@ private linear linear;
         if (gamepad2.bWasReleased())
             shooter.shooterSetPower(0);
 
-        if(gamepad2.WasPressed())
+        if(gamepad2.leftBumperWasPressed())
             linear.linearSetPower(1);
 
-        if(gamepad2.WasReleased())
+        if(gamepad2.leftBumperWasReleased())
             linear.linearSetPower(0);
 
-        if(gamepad2.WasPressed())
+        if(gamepad2.rightBumperWasPressed())
             intake.intakeSetPower(1);
 
-        if(gamepad2.WasReleased())
+        if(gamepad2.rightBumperWasReleased())
             intake.intakeSetPower(0);
 
             follower.manual(powers);
