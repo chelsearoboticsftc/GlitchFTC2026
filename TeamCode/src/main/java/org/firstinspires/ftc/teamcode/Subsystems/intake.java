@@ -46,6 +46,12 @@ public class intake {
         liftServo.setPosition(liftDown);
 
     }
+
+
+
+
+
+
 }
 
 

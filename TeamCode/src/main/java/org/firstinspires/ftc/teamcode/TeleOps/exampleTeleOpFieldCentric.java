@@ -79,10 +79,17 @@ private linear linear;
             linear.linearSetPower(0);
 
         if(gamepad2.rightBumperWasPressed())
+<<<<<<< Updated upstream
             intake.setServoPositionUp();
 
         if(gamepad2.rightBumperWasReleased())
             intake.setServoPositionDown();
+=======
+            intake.intakeSetPower(1);
+
+        if(gamepad2.rightBumperWasReleased())
+            intake.intakeSetPower(0);
+>>>>>>> Stashed changes
 
         (follower.manual(powers);
         follower.update();
