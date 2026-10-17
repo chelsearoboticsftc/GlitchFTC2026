@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOps;
+import android.annotation.SuppressLint;
+
 import com.pedropathing.follower.Follower;
 import com.pedropathing.math.Pose;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -19,7 +21,7 @@ private intake intake;
 private indexer indexer;
 private shooter shooter;
 private linear linear;
-private liftServo liftServo;
+
 
 
     private Follower follower;
@@ -35,8 +37,9 @@ private liftServo liftServo;
         indexer = new indexer(hardwareMap);
         shooter = new shooter(hardwareMap);
         linear = new linear(hardwareMap);
-        liftServo = liftServo(hardwareMap);
+
     }
+    @SuppressLint("SuspiciousIndentation")
     @Override
     public void loop() {
         DrivePowers powers = ManualDrive.fieldCentric(
@@ -76,12 +79,12 @@ private liftServo liftServo;
             linear.linearSetPower(0);
 
         if(gamepad2.rightBumperWasPressed())
-            liftServo.liftServoSetPower(1);
+            intake.setServoPositionUp();
 
         if(gamepad2.rightBumperWasReleased())
-            liftServo.liftServoSetPower(0);
+            intake.setServoPositionDown();
 
-            follower.manual(powers);
+        (follower.manual(powers);
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
         telemetry.addData("Robot X", robotPose.x());
