@@ -19,7 +19,7 @@ private intake intake;
 private indexer indexer;
 private shooter shooter;
 private linear linear;
-
+private liftServo liftServo;
 
 
     private Follower follower;
@@ -35,7 +35,7 @@ private linear linear;
         indexer = new indexer(hardwareMap);
         shooter = new shooter(hardwareMap);
         linear = new linear(hardwareMap);
-
+        liftServo = liftServo(hardwareMap);
     }
     @Override
     public void loop() {
@@ -76,10 +76,10 @@ private linear linear;
             linear.linearSetPower(0);
 
         if(gamepad2.rightBumperWasPressed())
-            intake.intakeSetPower(1);
+            liftServo.liftServoSetPower(1);
 
         if(gamepad2.rightBumperWasReleased())
-            intake.intakeSetPower(0);
+            liftServo.liftServoSetPower(0);
 
             follower.manual(powers);
         follower.update();

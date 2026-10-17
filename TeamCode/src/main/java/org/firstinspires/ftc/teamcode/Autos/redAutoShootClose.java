@@ -29,7 +29,7 @@ public class redAutoShootClose extends OpMode {
     private Follower follower;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose redpickuppark = poseFactory.of(58.6107, 8.5221, 90);
+    private final Pose redAutoShootClose = poseFactory.of(58.6107, 8.5221, 90);
     private final Pose point1 = poseFactory.of(33.1232, 9.223, 0);
     private final Pose point1Control1 = poseFactory.of(58.6015, 39.1144, 0);
     private final Pose point2 = poseFactory.of(7.8466, 8.8203, 0.9129);
@@ -37,8 +37,9 @@ public class redAutoShootClose extends OpMode {
     private final Pose point3 = poseFactory.of(10.0665, 105.7546, 0);
     private final Pose point3Control1 = poseFactory.of(45.3266, 51.31, 0);
 
+
     public Path path1() {
-        return Paths.curve(redpickuppark, point1Control1, point1).linear(redpickuppark, point1);
+        return Paths.curve(redAutoShootClose, point1Control1, point1).linear(redAutoShootClose, point1);
     }
 
     public Path path2() {
@@ -48,41 +49,35 @@ public class redAutoShootClose extends OpMode {
     public Path path3() {
         return Paths.curve(point3Start, point3Control1, point3).linear(point3Start, point3);
     }
+
     public Command autoRoutine() {
         return sequential(
                 follow(follower, path1()),
-                follow(follower,path2()),
-                follow(follower,path3()));
+                follow(follower, path2()),
+                follow(follower, path3()));
 
-        public void runOpMode; {
-            Scheduler.reset();
-            follower = Constants.create(hardwareMap);
-            follower.setPose(redpickuppark);
-            follower.update();
 
-            waitForStart();
-            schedule(autoRoutine());
+    }
+    @Override
+    public void init() {
+        Scheduler.reset();
+        follower = Constants.create(hardwareMap);
+        follower.setPose(redAutoShootClose);//sets the starting point of your Robot
+        follower.update();
+    }
+    @Override
+    public void start() {
+        schedule(autoRoutine());
+    }
+    @Override
+    public void loop() {
+        follower.update();
+        Scheduler.execute();
+    }
 
-            while (opModeIsActive()) {
-                follower.update();
-                Scheduler.execute();
+    @Override
+    public void stop() {
+        OpModeStorage.autonomousEndPose = follower.pose(); //saves your position in that file
+    }
 
-                telemetry.addData("x", follower.pose().x());
-                telemetry.addData("y", follower.pose().y());
-                telemetry.addData("heading", follower.pose().heading());
-
-                if (follower.currentPath() != null) {
-                    telemetry.addData("Current path distance remaining", follower.distanceToEndpoint());
-                    telemetry.addData("Path number", follower.pathIndex());
-                }
-
-                telemetry.update();
-
-                @Override
-                public void init() {
-                    Scheduler.reset();
-                    follower = Constants.create(hardwareMap);
-                    follower.setPose(redpickuppark);//sets the starting point of your Robot
-                    follower.update();
-                }
 }
