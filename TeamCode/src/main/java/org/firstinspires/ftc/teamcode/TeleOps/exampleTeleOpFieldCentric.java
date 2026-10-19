@@ -15,7 +15,7 @@ import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
 
-@TeleOp(name = "RoboCentric TeleOp")
+@TeleOp(name = "FieldCentric TeleOp")
 public class exampleTeleOpFieldCentric extends OpMode {
 private intake intake;
 private indexer indexer;
@@ -48,10 +48,10 @@ private linear linear;
                 gamepad1.right_stick_x,
                 follower.pose().heading()
         );
-        if (gamepad2.xWasPressed())
+        if (gamepad1.rightBumperWasPressed())
             intake.intakeSetPower(1);
 
-        if (gamepad2.xWasReleased())
+        if (gamepad1.rightBumperWasReleased())
             intake.intakeSetPower(0);
 
         if (gamepad2.yWasPressed())
@@ -79,19 +79,12 @@ private linear linear;
             linear.linearSetPower(0);
 
         if(gamepad2.rightBumperWasPressed())
-<<<<<<< Updated upstream
             intake.setServoPositionUp();
 
         if(gamepad2.rightBumperWasReleased())
             intake.setServoPositionDown();
-=======
-            intake.intakeSetPower(1);
 
-        if(gamepad2.rightBumperWasReleased())
-            intake.intakeSetPower(0);
->>>>>>> Stashed changes
-
-        (follower.manual(powers);
+        follower.manual(powers);
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
         telemetry.addData("Robot X", robotPose.x());
