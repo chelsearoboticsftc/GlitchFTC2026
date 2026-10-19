@@ -20,9 +20,8 @@ import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 
 @Autonomous
-public class redFarPark extends OpMode {
-}
-private Follower follower;
+public class blue_close extends OpMode {
+    private Follower follower;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose redFarPark = poseFactory.of(62.4156, 132.8646, 90);
@@ -30,9 +29,11 @@ private Follower follower;
     private final Pose point2 = poseFactory.of(13.3966, 120.0798, -3.894);
 
     public Path path1() {
-        return Paths.line(start, path1).tangent();
+        return Paths.line(redFarPark, path1).tangent();
     }
 
     public Path path2() {
         return Paths.line(path1, point2).reverseTangent();
     }
+
+}
