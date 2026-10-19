@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package org.firstinspires.ftc.teamcode.Autos;
 
 import static com.pedropathing.ivy.Scheduler.schedule;
@@ -37,3 +38,5 @@ public class blue_close extends OpMode {
     }
 
 }
+=======
+>>>>>>> 66e85a060a37ad53c9894ddbfdeec0a58b6d54e2
