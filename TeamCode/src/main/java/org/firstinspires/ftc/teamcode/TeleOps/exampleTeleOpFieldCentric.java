@@ -67,10 +67,10 @@ private linear linear;
             linear.linearSetPower(0);
 
         if (gamepad2.bWasPressed())
-            shooter.shooterSetPower(1);
+            shooter.shooterSetVelocity(1);
 
         if (gamepad2.bWasReleased())
-            shooter.shooterSetPower(0);
+            shooter.shooterSetVelocity(0);
 
         if(gamepad2.leftBumperWasPressed())
             linear.linearSetPower(1);
@@ -84,11 +84,7 @@ private linear linear;
         if(gamepad2.rightBumperWasReleased())
             intake.setServoPositionDown();
 
- Updated upstream;
         follower.manual(powers);
-
-        follower.manual(powers);
- Stashed changes;
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
         telemetry.addData("Robot X", robotPose.x());

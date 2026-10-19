@@ -1,4 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
+import android.health.connect.datatypes.units.Velocity;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -16,5 +18,6 @@ public class shooter {
 
     }
 
-    public void shooterSetPower(double power) {shooter.setPower(power);}
+    public void shooterSetVelocity(double Velocity) {
+        shooter.setVelocity(Velocity);}
 }

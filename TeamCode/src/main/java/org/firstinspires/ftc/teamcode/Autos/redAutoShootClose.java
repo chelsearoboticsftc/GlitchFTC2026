@@ -19,6 +19,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
+import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 
 
 
@@ -27,6 +28,7 @@ import org.firstinspires.ftc.teamcode.pedro.Constants;
 public class redAutoShootClose extends OpMode {
 
     private Follower follower;
+    private shooter shooter;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose redAutoShootClose = poseFactory.of(58.6107, 8.5221, 90);
@@ -52,6 +54,11 @@ public class redAutoShootClose extends OpMode {
 
     public Command autoRoutine() {
         return sequential(
+                //instant(() -> shooter.setVelocity(2000)),
+                waitMs(3000),
+                //instant(() -> shooter.setVelocity(0)),
+
+
                 follow(follower, path1()),
                 follow(follower, path2()),
                 follow(follower, path3()));
@@ -64,6 +71,7 @@ public class redAutoShootClose extends OpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(redAutoShootClose);//sets the starting point of your Robot
         follower.update();
+        shooter = new shooter(hardwareMap);
     }
     @Override
     public void start() {
