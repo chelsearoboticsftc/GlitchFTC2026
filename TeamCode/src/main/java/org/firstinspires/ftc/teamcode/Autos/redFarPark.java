@@ -1,9 +1,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< Updated upstream
 =======
 >>>>>>> 44964418a3f0e225e3ca5fd7161767415164a615
+=======
+>>>>>>> 15be3b59f04cee232d6c68c6670531713ebda461
 package org.firstinspires.ftc.teamcode.Autos;
 
 import static com.pedropathing.ivy.Scheduler.schedule;
@@ -49,6 +52,7 @@ private Follower follower;
     }
 
     public Path path2() {
+<<<<<<< HEAD
         return Paths.line(path1, point2).reverseTangent();
     }
 <<<<<<< HEAD
@@ -59,3 +63,6 @@ private Follower follower;
 =======
 >>>>>>> Stashed changes
 >>>>>>> 44964418a3f0e225e3ca5fd7161767415164a615
+=======
+        return Paths.line(path1, point2).rever
+>>>>>>> 15be3b59f04cee232d6c68c6670531713ebda461
