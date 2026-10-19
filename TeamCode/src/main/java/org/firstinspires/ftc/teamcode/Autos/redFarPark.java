@@ -6,6 +6,8 @@ import static com.pedropathing.ivy.commands.Commands.waitMs;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+
 import com.pedropathing.api.Paths;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.follower.Follower;
@@ -34,4 +36,35 @@ private Follower follower;
     }
 
     public Path path2() {
-        return Paths.line(path1, point2).rever
+        return Paths.line(path1, point2).reverseTangent();
+    }
+     public Command autoRoutine() {
+    return sequential(
+            follow(follower, path1()),
+            follow(follower, path2()));
+
+
+    }
+     @Override
+     public void init() {
+         Scheduler.reset();
+         follower = Constants.create(hardwareMap);
+         follower.setPose(redFarPark);//sets the starting point of your Robot
+         follower.update();
+}
+     @Override
+     public void start() {
+    schedule(autoRoutine());
+}
+     @Override
+     public void loop() {
+         follower.update();
+         Scheduler.execute();
+}
+
+     @Override
+     public void stop() {
+         OpModeStorage.autonomousEndPose = follower.pose(); //saves your position in that file
+}
+
+
