@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 package org.firstinspires.ftc.teamcode.Autos;
 
 import static com.pedropathing.ivy.Scheduler.schedule;
@@ -36,6 +34,4 @@ private Follower follower;
     }
 
     public Path path2() {
-        return Paths.line(path1, point2).reverseTangent();
-    }
->>>>>>> Stashed changes
+        return Paths.line(path1, point2).rever
