@@ -19,7 +19,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 @Autonomous
+HEAD:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autos/blueClosePark.java
 public class blueClosePark extends OpMode {
+public class autonomous extends OpMode {
+b81f46d6b47ef81f9f5c479d6d0e2c2a1241f9fd:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autos/autonomous.java
 
     private Follower follower;
 

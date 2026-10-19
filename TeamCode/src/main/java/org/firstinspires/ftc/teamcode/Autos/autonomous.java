@@ -1,0 +1,78 @@
+package org.firstinspires.ftc.teamcode.Autos;
+
+import static com.pedropathing.api.Paths.curve;
+import static com.pedropathing.api.Paths.line;
+import static com.pedropathing.ivy.Scheduler.schedule;
+import static com.pedropathing.ivy.groups.Groups.sequential;
+import static com.pedropathing.ivy.pedro.PedroCommands.follow;
+
+import com.pedropathing.api.Paths;
+import com.pedropathing.api.PoseFactory;
+import com.pedropathing.follower.Follower;
+import com.pedropathing.ivy.Command;
+import com.pedropathing.ivy.Scheduler;
+import com.pedropathing.math.Pose;
+import com.pedropathing.paths.Path;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+
+import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.pedro.Constants;
+@Autonomous
+<<<<<<<< HEAD:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autos/blueClosePark.java
+public class blueClosePark extends OpMode {
+========
+public class autonomous extends OpMode {
+>>>>>>>> b81f46d6b47ef81f9f5c479d6d0e2c2a1241f9fd:TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autos/autonomous.java
+
+    private Follower follower;
+
+    private final PoseFactory poseFactory = PoseFactory.degrees();
+
+    private final Pose start = poseFactory.of(80.594, 8.6738, 90);
+    private final Pose path1 = poseFactory.of(93.0595, 33.6417, 180);
+    private final Pose point2 = poseFactory.of(133.381, 35.0583, -177.9878);
+
+    public Path path1() {
+        return Paths.line(start, path1).linear(start, path1);
+    }
+
+    public Path path2() {
+        return Paths.line(path1, point2).reverseTangent();
+    }
+
+    private Command autoRoutine() {
+        return sequential(
+                follow(follower, path1()),
+                // Add mechanism commands here.
+                follow(follower, path2())
+        );
+    }
+
+    @Override
+    public void init() {
+        Scheduler.reset();
+        follower = Constants.create(hardwareMap);
+        follower.setPose(start);//sets the starting point of your Robot
+        follower.update();
+    }
+    @Override
+    public void start() {
+        schedule(autoRoutine());
+    }
+    @Override
+    public void loop() {
+        follower.update();
+        Scheduler.execute();
+    }
+
+    @Override
+    public void stop() {
+        OpModeStorage.autonomousEndPose = follower.pose(); //saves your position in that file
+    }
+
+
+
+}
+
+
