@@ -84,11 +84,11 @@ private linear linear;
         if(gamepad2.rightBumperWasReleased())
             intake.setServoPositionDown();
 
-<<<<<<< Updated upstream
+ Updated upstream;
         follower.manual(powers);
-=======
-        (follower.manual(powers)
->>>>>>> Stashed changes
+
+        follower.manual(powers);
+ Stashed changes;
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
         telemetry.addData("Robot X", robotPose.x());
