@@ -19,7 +19,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 @Autonomous
-public class blue_Close extends OpMode {
+
+public class blueClose extends OpMode {
 
     private Follower follower;
 
