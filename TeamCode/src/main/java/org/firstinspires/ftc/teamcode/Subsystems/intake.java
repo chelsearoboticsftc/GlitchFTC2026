@@ -13,7 +13,8 @@ import org.firstinspires.ftc.teamcode.pedro.Constants;
 
 public class intake {
 
-    Servo liftServo;
+    Servo rightIntake;
+    Servo leftIntake;
     DcMotorEx intake;
 
     public intake(HardwareMap hardwareMap) {
@@ -23,7 +24,8 @@ public class intake {
         intake.setZeroPowerBehavior(intakeConstants.INTAKE_ZERO_POWER_BEHAVIOR);
         intake.setDirection(intakeConstants.DIRECTION);
 
-        this.liftServo = hardwareMap.get(Servo.class, "liftServo");
+        this.rightIntake = hardwareMap.get(Servo.class, "rightIntake");
+        this.leftIntake = hardwareMap.get(Servo.class, "leftIntake");
     }
 
     protected static void setPower(double power) {
@@ -38,12 +40,15 @@ public class intake {
     }
 
     public void setServoPositionUp() {
-        liftServo.setPosition(liftUp);
+        leftIntake.setPosition(liftUp);
+        rightIntake.setPosition(liftDown);
 
     }
 
     public void setServoPositionDown() {
-        liftServo.setPosition(liftDown);
+        leftIntake.setPosition(liftDown);
+        rightIntake.setPosition(liftUp);
+
 
     }
 

@@ -67,16 +67,11 @@ private linear linear;
             linear.linearSetPower(0);
 
         if (gamepad2.bWasPressed())
-            shooter.shooterSetVelocity(1);
+            shooter.shooterSetVelocity(1800);
 
         if (gamepad2.bWasReleased())
             shooter.shooterSetVelocity(0);
 
-        if(gamepad2.leftBumperWasPressed())
-            linear.linearSetPower(1);
-
-        if(gamepad2.leftBumperWasReleased())
-            linear.linearSetPower(0);
 
         if(gamepad2.rightBumperWasPressed())
             intake.setServoPositionUp();
