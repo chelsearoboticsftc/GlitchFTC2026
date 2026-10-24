@@ -20,7 +20,7 @@ public class exampleTeleOpFieldCentric extends OpMode {
 private intake intake;
 private indexer indexer;
 private shooter shooter;
-private linear linear;
+
 
 
 
@@ -36,7 +36,7 @@ private linear linear;
         intake = new intake(hardwareMap);
         indexer = new indexer(hardwareMap);
         shooter = new shooter(hardwareMap);
-        linear = new linear(hardwareMap);
+
 
     }
     @SuppressLint("SuspiciousIndentation")
@@ -60,11 +60,6 @@ private linear linear;
         if (gamepad2.yWasReleased())
             indexer.indexerSetPower(0);
 
-        if (gamepad2.aWasPressed())
-            linear.linearSetPower(1);
-
-        if (gamepad2.aWasReleased())
-            linear.linearSetPower(0);
 
         if (gamepad2.bWasPressed())
             shooter.shooterSetVelocity(1800);
@@ -79,11 +74,21 @@ private linear linear;
         if(gamepad2.rightBumperWasReleased())
             intake.setServoPositionDown();
 
+        if (gamepad2.xWasPressed()){
+            telemetry.addLine("buttonPressed");
+            shooter.setServoPositionUp();}
+
+        if (gamepad2.xWasReleased()) {
+            telemetry.addLine("buttonReleased");
+            shooter.setServoPositionDown();
+        }
+
         follower.manual(powers);
         follower.update();
         Pose robotPose = follower.pose(); // returns a Pose object
         telemetry.addData("Robot X", robotPose.x());
         telemetry.addData("Robot Y", robotPose.y());
         telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
+        telemetry.update();
     }
 }

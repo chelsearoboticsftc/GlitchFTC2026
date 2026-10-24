@@ -40,13 +40,13 @@ public class intake {
     }
 
     public void setServoPositionUp() {
-        leftIntake.setPosition(liftUp);
+        leftIntake.setPosition(liftDown);
         rightIntake.setPosition(liftDown);
 
     }
 
     public void setServoPositionDown() {
-        leftIntake.setPosition(liftDown);
+        leftIntake.setPosition(liftUp);
         rightIntake.setPosition(liftUp);
 
 
