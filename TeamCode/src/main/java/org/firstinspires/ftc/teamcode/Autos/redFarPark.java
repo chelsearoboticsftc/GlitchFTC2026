@@ -2,7 +2,6 @@
 package org.firstinspires.ftc.teamcode.Autos;
 
 import static com.pedropathing.ivy.Scheduler.schedule;
-import static com.pedropathing.ivy.commands.Commands.instant;
 import static com.pedropathing.ivy.commands.Commands.waitMs;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 
@@ -18,7 +17,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 @Autonomous
 public class redFarPark extends OpMode {
