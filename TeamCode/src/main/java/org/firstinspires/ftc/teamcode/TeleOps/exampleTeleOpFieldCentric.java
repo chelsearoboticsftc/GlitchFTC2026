@@ -44,51 +44,75 @@ private shooter shooter;
     public void loop() {
         DrivePowers powers = ManualDrive.fieldCentric(
                 -gamepad1.left_stick_y,
-                gamepad1.left_stick_x,
-                gamepad1.right_stick_x,
+                -gamepad1.left_stick_x,
+                -gamepad1.right_stick_x,
                 follower.pose().heading()
         );
-        if (gamepad1.rightBumperWasPressed())
+
+        if (gamepad1.rightBumperWasPressed()) {
             intake.intakeSetPower(1);
-
-        if (gamepad1.rightBumperWasReleased())
-            intake.intakeSetPower(0);
-
-        if (gamepad2.yWasPressed())
             indexer.indexerSetPower(1);
-
-        if (gamepad2.yWasReleased())
-            indexer.indexerSetPower(0);
-
-
-        if (gamepad2.bWasPressed())
-            shooter.shooterSetVelocity(1800);
-
-        if (gamepad2.bWasReleased())
-            shooter.shooterSetVelocity(0);
-
-
-        if(gamepad2.rightBumperWasPressed())
-            intake.setServoPositionUp();
-
-        if(gamepad2.rightBumperWasReleased())
-            intake.setServoPositionDown();
-
-        if (gamepad2.xWasPressed()){
-            telemetry.addLine("buttonPressed");
-            shooter.setServoPositionUp();}
-
-        if (gamepad2.xWasReleased()) {
-            telemetry.addLine("buttonReleased");
-            shooter.setServoPositionDown();
         }
 
-        follower.manual(powers);
-        follower.update();
-        Pose robotPose = follower.pose(); // returns a Pose object
-        telemetry.addData("Robot X", robotPose.x());
-        telemetry.addData("Robot Y", robotPose.y());
-        telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
-        telemetry.update();
-    }
-}
+
+        if (gamepad1.rightBumperWasReleased()) {
+            intake.intakeSetPower(0);
+            indexer.indexerSetPower(0);
+        }
+
+        if (gamepad2.yWasPressed()) {
+            indexer.indexerSetPower(1);
+        }
+
+        if (gamepad2.yWasReleased()) {
+            indexer.indexerSetPower(0);
+        }
+
+
+        if (gamepad2.bWasPressed()) {
+            shooter.shooterSetVelocity(6000);
+        }
+
+        if (gamepad2.bWasReleased()) {
+            shooter.shooterSetVelocity(0);
+        }
+
+
+        if (gamepad2.rightBumperWasPressed()) {
+            intake.setServoPositionUp();
+        }
+
+        if (gamepad2.rightBumperWasReleased()) {
+            intake.setServoPositionDown();
+        }
+
+        if (gamepad2.leftBumperWasPressed()) {
+            intake.setServoPositionDown();
+        }
+
+        if (gamepad2.leftBumperWasReleased()) {
+            intake.setServoPositionUp();}
+
+
+        if (gamepad2.xWasPressed()) {
+            telemetry.addLine("buttonPressed");
+            shooter.setServoPositionUp();
+            indexer.indexerSetPower(1);}
+
+
+
+            if (gamepad2.xWasReleased()) {
+                telemetry.addLine("buttonReleased");
+                shooter.setServoPositionDown();
+                indexer.indexerSetPower(0);
+            }
+
+
+            follower.manual(powers);
+            follower.update();
+            Pose robotPose = follower.pose(); // returns a Pose object
+            telemetry.addData("Robot X", robotPose.x());
+            telemetry.addData("Robot Y", robotPose.y());
+            telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
+            telemetry.update();
+        }}

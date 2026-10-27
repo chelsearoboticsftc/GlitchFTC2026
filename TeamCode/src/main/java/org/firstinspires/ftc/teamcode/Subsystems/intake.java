@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode.Subsystems;
-import static org.firstinspires.ftc.teamcode.Subsystems.intakeConstants.liftDown;
-import static org.firstinspires.ftc.teamcode.Subsystems.intakeConstants.liftUp;
+import static org.firstinspires.ftc.teamcode.Subsystems.intakeConstants.liftDownLeft;
+import static org.firstinspires.ftc.teamcode.Subsystems.intakeConstants.liftDownRight;
+import static org.firstinspires.ftc.teamcode.Subsystems.intakeConstants.liftUpLeft;
+import static org.firstinspires.ftc.teamcode.Subsystems.intakeConstants.liftUpRight;
 import static org.firstinspires.ftc.teamcode.Subsystems.linearConstants.clawClosed;
 import static org.firstinspires.ftc.teamcode.Subsystems.linearConstants.clawOpen;
 
@@ -40,14 +42,14 @@ public class intake {
     }
 
     public void setServoPositionUp() {
-        leftIntake.setPosition(liftDown);
-        rightIntake.setPosition(liftDown);
+        leftIntake.setPosition(liftUpLeft);
+        rightIntake.setPosition(liftUpRight);
 
     }
 
     public void setServoPositionDown() {
-        leftIntake.setPosition(liftUp);
-        rightIntake.setPosition(liftUp);
+        leftIntake.setPosition(liftDownLeft);
+        rightIntake.setPosition(liftDownRight);
 
 
     }

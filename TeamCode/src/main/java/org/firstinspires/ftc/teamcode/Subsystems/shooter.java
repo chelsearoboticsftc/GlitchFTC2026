@@ -39,7 +39,7 @@ public class shooter {
 
     public void setServoPositionUp() {
         shooterGateLeft.setPosition(leftGateUp);
-        shooterGateRight.setPosition(leftGateUp);
+        shooterGateRight.setPosition(rightGateUp);
 
     }
 

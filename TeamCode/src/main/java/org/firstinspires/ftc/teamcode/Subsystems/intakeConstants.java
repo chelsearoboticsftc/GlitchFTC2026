@@ -12,10 +12,13 @@ public class intakeConstants {
 
 
        //These control the positions for the left servo
-       public static double liftUp = 0.8;
+       public static double liftUpLeft= 1;
 
-       public static double liftDown = 0;
+       public static double liftDownLeft = 0.7;
 
 
+    public static double liftUpRight = 1;
+
+    public static double liftDownRight = 0.7;
 }
 
