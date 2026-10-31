@@ -1,37 +1,5 @@
-<<<<<<< HEAD
-//package org.firstinspires.ftc.teamcode.Autos;
-//
-//import android.graphics.Path;
-//
-//import com.pedropathing.api.PoseFactory;
-//import com.pedropathing.math.Pose;
-//import com.pedropathing.paths.curves.Line;
-//import static com.pedropathing.api.Paths.;
-//import com.pedropathing.api.Paths;
-//
-//import com.pedropathing.api.PoseFactory;
-//import com.pedropathing.math.Pose;
-//
-//public class redAutoShootParkFar
-//
-//public class Paths {
-//
-//    private final PoseFactory poseFactory = PoseFactory.degrees();
-//
-//    private final Pose start = poseFactory.of(60.0668, 133.0149, 90);
-//    private final Pose path1 = poseFactory.of(59.0615, 111.2825, -92.6485);
-//    private final Pose point2 = poseFactory.of(17.106, 121.1152, 166.8103);
-//
-//    public Path path1() {
-//        return Paths.Line(start, path1).tangent();
-//    }
-//
-//    public Path path2() {
-//        return Paths.Line(path1, point2).tangent();
-//    }
-//  }
-//}
-=======
+
+
 package org.firstinspires.ftc.teamcode.Autos;
 
 
@@ -62,26 +30,24 @@ public class redAutoShootParkFar extends OpMode{
 
     private Follower follower;
     private shooter shooter;
-public class Paths {
 
-    private final PoseFactory poseFactory = PoseFactory.degrees();
+    public class Paths {
 
-    private final Pose redAutoShootParkFar = poseFactory.of(60.0668, 133.0149, 90);
-    private final Pose path1 = poseFactory.of(59.0615, 111.2825, -92.6485);
-    private final Pose point2 = poseFactory.of(17.106, 121.1152, 166.8103);
+        private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    public Path path1() {
-        return Paths.Line(start, path1).tangent();
+        private final Pose start = poseFactory.of(62.3326, 133.3411, 90);
+        private final Pose path1 = poseFactory.of(12.9822, 123.1273, 0);
+        private final Pose path1Control1 = poseFactory.of(65.7263, 111.5634, 0);
+
+        public Path path1() {
+            return Paths.curve(start, path1Control1, path1).linear(start, path1);
+        }
     }
+
 
     public Path path2() {
         return Paths.Line(path1, point2).tangent();
     }
-
-
-
-  }
-
 
 
     public Path path1() {
@@ -98,8 +64,8 @@ public class Paths {
                 waitMs(3000),
                 //instant(() -> shooter.setVelocity(0)),
 
-                follow(follower, path1()),
-                follow(follower, path2()));
+                follow(follower, path1()),;
+
 
     }
 
@@ -129,4 +95,4 @@ public class Paths {
     }
 
 }
->>>>>>> a10f3da22b3d4f99a99bf3ab86055b2a390242e9
+

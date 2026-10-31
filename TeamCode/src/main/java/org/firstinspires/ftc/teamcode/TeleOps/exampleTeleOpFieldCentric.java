@@ -70,7 +70,7 @@ private shooter shooter;
 
 
         if (gamepad2.bWasPressed()) {
-            shooter.shooterSetVelocity(6000);
+            shooter.shooterSetVelocity(965);
         }
 
         if (gamepad2.bWasReleased()) {
@@ -113,6 +113,8 @@ private shooter shooter;
             Pose robotPose = follower.pose(); // returns a Pose object
             telemetry.addData("Robot X", robotPose.x());
             telemetry.addData("Robot Y", robotPose.y());
+            telemetry.addData("Shooter 1 Velocity", shooter.getOneShooterVelocity());
+            telemetry.addData("Shooter 2 Velocity", shooter.getTwoShooterVelocity());
             telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
             telemetry.update();
         }}

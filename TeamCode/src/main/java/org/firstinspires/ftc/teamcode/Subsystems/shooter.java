@@ -23,11 +23,11 @@ public class shooter {
         this.shooterOne = hardwareMap.get(DcMotorEx.class, "shooterTwo");
         shooterOne.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
         shooterOne.setDirection(shooterConstants.DIRECTION);
-
+        shooterOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         this.shooterTwo = hardwareMap.get(DcMotorEx.class, "shooterOne");
         shooterTwo.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
         shooterTwo.setDirection(shooterConstants.DIRECTION);
-
+        shooterTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         this.shooterGateRight = hardwareMap.get(Servo.class, "shooterGateRight");
         this.shooterGateLeft = hardwareMap.get(Servo.class, "shooterGateLeft");
     }
@@ -49,4 +49,11 @@ public class shooter {
 
 
     }
+    public double getOneShooterVelocity(){
+        return shooterOne.getVelocity();
+    }
+    public double getTwoShooterVelocity(){
+        return shooterTwo.getVelocity();
+    }
+
 }
