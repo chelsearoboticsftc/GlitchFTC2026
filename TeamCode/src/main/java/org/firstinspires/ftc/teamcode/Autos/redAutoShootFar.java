@@ -53,10 +53,7 @@ public class redAutoShootParkFar extends OpMode{
     public Path path1() {
         return com.pedropathing.api.Paths.line(redAutoShootParkFar, path1).tangent();
     }
-
-    public Path path2() {
-        return com.pedropathing.api.Paths.line(path1, point2).reverseTangent();
-    }
+    
 
     public Command autoRoutine() {
         return sequential(
