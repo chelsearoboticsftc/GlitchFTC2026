@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+package org.firstinspires.ftc.teamcode.Autos;
 //package org.firstinspires.ftc.teamcode.Autos;
 //
 //import android.graphics.Path;
@@ -31,8 +31,6 @@
 //    }
 //  }
 //}
-=======
-package org.firstinspires.ftc.teamcode.Autos;
 
 
 import static com.pedropathing.ivy.Scheduler.schedule;
