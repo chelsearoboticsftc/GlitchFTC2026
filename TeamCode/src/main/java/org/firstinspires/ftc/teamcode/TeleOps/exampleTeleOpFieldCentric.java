@@ -75,7 +75,7 @@ private Gate gate;
 
 
         if (gamepad2.right_trigger> .25) {
-            shooterOne.shooter1SetVelocity(1000);
+            shooterOne.shooter1SetVelocity(-1000);
             shooterTwo.shooter2SetVelocity(1000);
         }
 
