@@ -7,20 +7,23 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.Subsystems.Gate;
 import org.firstinspires.ftc.teamcode.Subsystems.indexer;
-import org.firstinspires.ftc.teamcode.Subsystems.linear;
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
+import org.firstinspires.ftc.teamcode.Subsystems.shooterOne;
+import org.firstinspires.ftc.teamcode.Subsystems.shooterTwo;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
+
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
 
 @TeleOp(name = "FieldCentric TeleOp")
 public class exampleTeleOpFieldCentric extends OpMode {
 private intake intake;
 private indexer indexer;
-private shooter shooter;
-
+private shooterOne shooterOne;
+private shooterTwo shooterTwo;
+private Gate gate;
 
 
 
@@ -35,7 +38,9 @@ private shooter shooter;
         follower = Constants.create(hardwareMap);
         intake = new intake(hardwareMap);
         indexer = new indexer(hardwareMap);
-        shooter = new shooter(hardwareMap);
+        shooterOne = new shooterOne(hardwareMap);
+        shooterTwo = new shooterTwo(hardwareMap);
+        gate = new Gate(hardwareMap);
 
 
     }
@@ -69,14 +74,14 @@ private shooter shooter;
         }
 
 
-        if (gamepad2.rightTriggerWasPressed()) {
-            shooter.shooter1SetVelocity(965);
-            shooter.shooter2SetVelocity(965);
+        if (gamepad2.right_trigger> .25) {
+            shooterOne.shooter1SetVelocity(1000);
+            shooterTwo.shooter2SetVelocity(1000);
         }
 
-        if (gamepad2.rightTriggerWasReleased()) {
-            shooter.shooter1SetVelocity(0);
-            shooter.shooter2SetVelocity(0);
+        if (gamepad2.right_trigger<.25) {
+            shooterOne.shooter1SetVelocity(0);
+            shooterTwo.shooter2SetVelocity(0);
         }
 
 
@@ -95,17 +100,16 @@ private shooter shooter;
         if (gamepad2.leftBumperWasReleased()) {
             intake.setServoPositionUp();}
 
-
         if (gamepad2.xWasPressed()) {
             telemetry.addLine("buttonPressed");
-            shooter.setServoPositionUp();
+            gate.setServoPositionUp();
             indexer.indexerSetPower(1);}
 
 
 
             if (gamepad2.xWasReleased()) {
                 telemetry.addLine("buttonReleased");
-                shooter.setServoPositionDown();
+                gate.setServoPositionDown();
                 indexer.indexerSetPower(0);
             }
 
@@ -115,8 +119,10 @@ private shooter shooter;
             Pose robotPose = follower.pose(); // returns a Pose object
             telemetry.addData("Robot X", robotPose.x());
             telemetry.addData("Robot Y", robotPose.y());
-            telemetry.addData("Shooter 1 Velocity", shooter.getOneShooterVelocity());
-            telemetry.addData("Shooter 2 Velocity", shooter.getTwoShooterVelocity());
+            telemetry.addData("Shooter 1 Velocity", shooterOne.getOneShooterVelocity());
+            telemetry.addData("Shooter 2 Velocity", shooterTwo.getTwoShooterVelocity());
             telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
+            //telemetry.addData("direction", shooter.getShooterOne());
+           // telemetry.addData("direction", shooter.getShooterTwo());
             telemetry.update();
         }}

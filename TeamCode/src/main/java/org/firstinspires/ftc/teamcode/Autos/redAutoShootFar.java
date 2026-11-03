@@ -4,18 +4,16 @@ import com.pedropathing.api.Paths;
 import com.pedropathing.ivy.Command;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import static com.pedropathing.api.Paths.*;
 import com.pedropathing.paths.Path;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import com.pedropathing.follower.Follower;
 
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
+import org.firstinspires.ftc.teamcode.Subsystems.Gate;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.math.Pose;
 import com.pedropathing.ivy.Scheduler;
 import static com.pedropathing.ivy.Scheduler.schedule;
-import static com.pedropathing.ivy.commands.Commands.instant;
 import static com.pedropathing.ivy.commands.Commands.waitMs;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
@@ -23,7 +21,7 @@ import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 @Autonomous
 public class redAutoShootFar extends OpMode {
     private Follower follower;
-    private shooter shooter;
+    private Gate Gate;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
     private final Pose start = poseFactory.of(62.3326, 133.3411, 90);
@@ -48,7 +46,7 @@ public class redAutoShootFar extends OpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
-        shooter = new shooter(hardwareMap);
+        Gate = new Gate(hardwareMap);
     }
     @Override
     public void start() {

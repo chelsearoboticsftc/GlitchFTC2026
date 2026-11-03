@@ -14,7 +14,7 @@ public class shooterTwo {
     public shooterTwo(HardwareMap hardwareMap) {
         this.shooterTwo = hardwareMap.get(DcMotorEx.class, "shooterTwo");
         this.shooterTwo.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
-        this.shooterTwo.setDirection(DcMotorSimple.Direction.FORWARD);
+        this.shooterTwo.setDirection(DcMotorSimple.Direction.REVERSE);
         this.shooterTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
