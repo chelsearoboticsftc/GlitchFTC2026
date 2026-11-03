@@ -8,6 +8,7 @@ import android.health.connect.datatypes.units.Velocity;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -20,20 +21,23 @@ public class shooter {
 
     public shooter(HardwareMap hardwareMap) {
 
-        this.shooterOne = hardwareMap.get(DcMotorEx.class, "shooterTwo");
-        shooterOne.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
-        shooterOne.setDirection(shooterConstants.DIRECTION);
-        shooterOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        this.shooterTwo = hardwareMap.get(DcMotorEx.class, "shooterOne");
-        shooterTwo.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
-        shooterTwo.setDirection(shooterConstants.DIRECTION);
-        shooterTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        this.shooterOne = hardwareMap.get(DcMotorEx.class, "shooterOne");
+        this.shooterOne.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
+        this.shooterOne.setDirection(DcMotorSimple.Direction.FORWARD);
+        this.shooterOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        this.shooterTwo = hardwareMap.get(DcMotorEx.class, "shooterTwo");
+        this.shooterTwo.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
+        this.shooterTwo.setDirection(DcMotorSimple.Direction.FORWARD);
+        this.shooterTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         this.shooterGateRight = hardwareMap.get(Servo.class, "shooterGateRight");
         this.shooterGateLeft = hardwareMap.get(Servo.class, "shooterGateLeft");
     }
 
-    public void shooterSetVelocity(double Velocity) {
+    public void shooter1SetVelocity(double Velocity) {
         shooterOne.setVelocity(Velocity);
+    }
+    public void shooter2SetVelocity(double Velocity) {
+
         shooterTwo.setVelocity(Velocity);
     }
 

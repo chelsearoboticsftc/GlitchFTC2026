@@ -8,12 +8,12 @@ public class shooterConstants {
 
     public static final DcMotor.ZeroPowerBehavior SHOOTER_ZERO_POWER_BEHAVIOR = DcMotor.ZeroPowerBehavior.BRAKE;
 
-    public static final DcMotorSimple.Direction DIRECTION = DcMotorSimple.Direction.FORWARD;
-
-    public static double rightGateUp = 0.999;
+    public static final DcMotorSimple.Direction DIRECTION_1 = DcMotorSimple.Direction.FORWARD;
+    public static final DcMotorSimple.Direction DIRECTION_2 = DcMotorSimple.Direction.FORWARD;
+    public static double rightGateUp = 1;
     public static double rightGateDown = 0.96;
 
-    public static double leftGateDown = 0.999;
+    public static double leftGateDown = 1;
     public static double leftGateUp = 0.96;
 
 }

@@ -49,13 +49,13 @@ private shooter shooter;
                 follower.pose().heading()
         );
 
-        if (gamepad1.rightBumperWasPressed()) {
+        if (gamepad1.bWasPressed()) {
             intake.intakeSetPower(1);
             indexer.indexerSetPower(1);
         }
 
 
-        if (gamepad1.rightBumperWasReleased()) {
+        if (gamepad2.bWasReleased()) {
             intake.intakeSetPower(0);
             indexer.indexerSetPower(0);
         }
@@ -69,12 +69,14 @@ private shooter shooter;
         }
 
 
-        if (gamepad2.bWasPressed()) {
-            shooter.shooterSetVelocity(965);
+        if (gamepad2.rightTriggerWasPressed()) {
+            shooter.shooter1SetVelocity(965);
+            shooter.shooter2SetVelocity(965);
         }
 
-        if (gamepad2.bWasReleased()) {
-            shooter.shooterSetVelocity(0);
+        if (gamepad2.rightTriggerWasReleased()) {
+            shooter.shooter1SetVelocity(0);
+            shooter.shooter2SetVelocity(0);
         }
 
 
