@@ -22,8 +22,6 @@ import org.firstinspires.ftc.teamcode.pedro.Constants;
 import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 
 
-
-
 @Autonomous
 public class redAutoShootClose extends OpMode {
 
@@ -65,6 +63,7 @@ public class redAutoShootClose extends OpMode {
 
 
     }
+
     @Override
     public void init() {
         Scheduler.reset();
@@ -73,10 +72,12 @@ public class redAutoShootClose extends OpMode {
         follower.update();
         shooter = new shooter(hardwareMap);
     }
+
     @Override
     public void start() {
         schedule(autoRoutine());
     }
+
     @Override
     public void loop() {
         follower.update();

@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode.Autos;
 import static com.pedropathing.ivy.Scheduler.schedule;
 import static com.pedropathing.ivy.commands.Commands.waitMs;
 import static com.pedropathing.ivy.groups.Groups.sequential;
-
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
+
 import com.pedropathing.api.Paths;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.follower.Follower;

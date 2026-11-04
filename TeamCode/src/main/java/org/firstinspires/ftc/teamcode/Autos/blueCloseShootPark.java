@@ -13,6 +13,7 @@ import com.pedropathing.math.Pose;
 import com.pedropathing.paths.Path;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
@@ -36,7 +37,7 @@ public class blueCloseShootPark extends OpMode{
 
 
 
-    public Path path1(){return Paths.line(blueCloseShootPark, path1).linear();}
+
 
 
     public Command autoRoutine() {
@@ -62,7 +63,7 @@ public class blueCloseShootPark extends OpMode{
         follower = Constants.create(hardwareMap);
         follower.setPose(blueCloseShootPark);//sets the starting point of your Robot
         follower.update();
-
+        shooter = new shooter(hardwareMap);
     }
 
 
