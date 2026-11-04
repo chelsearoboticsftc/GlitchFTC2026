@@ -71,14 +71,16 @@ private shooter shooter;
 
         if (gamepad2.rightTriggerWasPressed()) {
             shooter.shooter1SetVelocity(965);
-            shooter.shooter2SetVelocity(965);
+            shooter.shooter2SetVelocity(-965);
+
+
         }
 
         if (gamepad2.rightTriggerWasReleased()) {
             shooter.shooter1SetVelocity(0);
             shooter.shooter2SetVelocity(0);
-        }
 
+        }
 
         if (gamepad2.rightBumperWasPressed()) {
             intake.setServoPositionUp();
