@@ -24,13 +24,22 @@ public class shooter {
         this.shooterOne = hardwareMap.get(DcMotorEx.class, "shooterOne");
         this.shooterOne.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
         this.shooterOne.setDirection(DcMotorSimple.Direction.FORWARD);
-        this.shooterOne.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         this.shooterTwo = hardwareMap.get(DcMotorEx.class, "shooterTwo");
         this.shooterTwo.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
         this.shooterTwo.setDirection(DcMotorSimple.Direction.FORWARD);
-        this.shooterTwo.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         this.shooterGateRight = hardwareMap.get(Servo.class, "shooterGateRight");
         this.shooterGateLeft = hardwareMap.get(Servo.class, "shooterGateLeft");
+        shooterOne.setVelocityPIDFCoefficients(
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_P, //Proportional Gain
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_I, //Integral Gain
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_D, //Derivative Gain
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_F);
+
+        shooterTwo.setVelocityPIDFCoefficients(
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_P, //Proportional Gain
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_I, //Integral Gain
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_D, //Derivative Gain
+                SampleSubsystemConstants.MOTOR_NAME_VELOCITY_F);
     }
 
     public void shooter1SetVelocity(double Velocity) {

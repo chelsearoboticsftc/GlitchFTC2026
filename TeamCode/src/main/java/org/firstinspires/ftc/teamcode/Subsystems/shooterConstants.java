@@ -6,14 +6,14 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class shooterConstants {
 
-    public static final DcMotor.ZeroPowerBehavior SHOOTER_ZERO_POWER_BEHAVIOR = DcMotor.ZeroPowerBehavior.BRAKE;
+    public static final DcMotor.ZeroPowerBehavior SHOOTER_ZERO_POWER_BEHAVIOR = DcMotor.ZeroPowerBehavior.FLOAT;
 
     public static final DcMotorSimple.Direction DIRECTION_1 = DcMotorSimple.Direction.FORWARD;
     public static final DcMotorSimple.Direction DIRECTION_2 = DcMotorSimple.Direction.FORWARD;
-    public static double rightGateUp = 1;
-    public static double rightGateDown = 0.96;
+    public static double rightGateUp = 0.3;  //This is the down
+    public static double rightGateDown = 0.65;  //This is the up
 
-    public static double leftGateDown = 1;
-    public static double leftGateUp = 0.96;
+    public static double leftGateDown = 0.3;  //This is the down
+    public static double leftGateUp = 0.65;   //This is the up
 
 }
