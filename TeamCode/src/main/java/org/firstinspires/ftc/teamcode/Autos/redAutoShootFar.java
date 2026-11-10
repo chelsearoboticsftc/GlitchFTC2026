@@ -35,9 +35,9 @@ public class redAutoShootFar extends OpMode {
     }
     private Command autoRoutine() {
         return sequential(
-               // instant(()->shooter.shooterSetVelocity(965)),
+                //instant(()->shooter.shooterSetVelocity(965)),
                 waitMs(10000),
-               // instant(()->shooter.shooterSetVelocity(0)),
+                //instant(()->shooter.shooterSetVelocity(0)),
                 follow(follower, path1())
         );
     }

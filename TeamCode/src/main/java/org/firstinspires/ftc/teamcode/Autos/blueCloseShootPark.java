@@ -30,7 +30,7 @@
 //        private final Pose path1 = poseFactory.of(132.3169, 22.4463, 180);
 //        private final Pose path1Control1 = poseFactory.of(85.6619, 33.2731, 0);
 //
-//        public Path path1() {
+//        public Path path() {
 //            return Paths.curve(start, path1Control1, path1).linear(start, path1);
 //        }
 //

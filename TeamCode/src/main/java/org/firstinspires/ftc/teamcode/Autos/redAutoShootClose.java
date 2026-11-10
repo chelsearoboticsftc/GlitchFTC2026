@@ -33,21 +33,21 @@ public class redAutoShootClose extends OpMode {
     private intake intake;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose redAutoShootClose = poseFactory.of(58.6107, 8.5221, 90);
-    private final Pose point1 = poseFactory.of(33.1232, 9.223, 0);
+    private final Pose start = poseFactory.of(62.3229, 8.5221, 270);
+    private final Pose point1 = poseFactory.of(33.56, 9.6598, 0);
     private final Pose point1Control1 = poseFactory.of(58.6015, 39.1144, 0);
-    private final Pose point2 = poseFactory.of(7.8466, 8.8203, 0.9129);
-    private final Pose point3Start = poseFactory.of(7.8466, 8.8203, 0);
+    private final Pose point2Start = poseFactory.of(33.56, 9.6598, 0);
+    private final Pose point2 = poseFactory.of(13.524, 9.4754, 0);
+    private final Pose point3Start = poseFactory.of(13.524, 9.4754, 0);
     private final Pose point3 = poseFactory.of(10.0665, 105.7546, 0);
-    private final Pose point3Control1 = poseFactory.of(45.3266, 51.31, 0);
-
+    private final Pose point3Control1 = poseFactory.of(49.6938, 55.6773, 0);
 
     public Path path1() {
-        return Paths.curve(redAutoShootClose, point1Control1, point1).linear(redAutoShootClose, point1);
+        return Paths.curve(start, point1Control1, point1).linear(start, point1);
     }
 
     public Path path2() {
-        return Paths.line(point1, point2).reverseTangent();
+        return Paths.line(point2Start, point2).linear(point2Start, point2);
     }
 
     public Path path3() {
@@ -74,7 +74,7 @@ public class redAutoShootClose extends OpMode {
     public void init() {
         Scheduler.reset();
         follower = Constants.create(hardwareMap);
-        follower.setPose(redAutoShootClose);//sets the starting point of your Robot
+        follower.setPose(start);//sets the starting point of your Robot
         follower.update();
         shooter = new shooter(hardwareMap);
         intake = new intake(hardwareMap);
