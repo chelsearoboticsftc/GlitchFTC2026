@@ -39,6 +39,7 @@ private Gate Gate;
 
     }
     @SuppressLint("SuspiciousIndentation")
+
     @Override
     public void loop() {
         DrivePowers powers = ManualDrive.fieldCentric(
