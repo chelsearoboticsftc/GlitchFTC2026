@@ -9,7 +9,6 @@ import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 
 import com.pedropathing.api.Paths;
-import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.ivy.Command;
@@ -22,14 +21,14 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.indexer;
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
+import org.firstinspires.ftc.teamcode.Subsystems.Gate;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 
 
 @Autonomous
 public class blueAutoShootFar extends OpMode {
     private Follower follower;
-    private shooter shooter;
+    private Gate Gate;
     private intake intake;
     private indexer indexer;
     private final PoseFactory poseFactory = PoseFactory.degrees();
@@ -58,15 +57,15 @@ public class blueAutoShootFar extends OpMode {
     private Command autoRoutine() {
         return sequential(
 
-                instant(()-> shooter.shooter1SetVelocity(1435)),
-                instant(()-> shooter.shooter2SetVelocity(1435)),
+                instant(()-> Gate.shooter1SetVelocity(1435)),
+                instant(()-> Gate.shooter2SetVelocity(1435)),
                 waitMs(4000),
                 instant(()-> indexer.indexerSetPower(1)),
-                instant(()-> shooter.setServoPositionUp()),
+                instant(()-> Gate.setServoPositionUp()),
                 waitMs(5000),
-                instant(() -> shooter.shooter1SetVelocity(0)),
-                instant(() -> shooter.shooter2SetVelocity(0)),
-                instant(()-> shooter.setServoPositionDown()),
+                instant(() -> Gate.shooter1SetVelocity(0)),
+                instant(() -> Gate.shooter2SetVelocity(0)),
+                instant(()-> Gate.setServoPositionDown()),
                 instant(()-> indexer.indexerSetPower(0)),
                 follow(follower, path1()),
                 instant(() -> intake.setServoPositionDown()),
@@ -86,7 +85,7 @@ public class blueAutoShootFar extends OpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
-        shooter = new shooter(hardwareMap);
+        Gate = new Gate(hardwareMap);
         indexer = new indexer(hardwareMap);
         intake = new intake(hardwareMap);
     }

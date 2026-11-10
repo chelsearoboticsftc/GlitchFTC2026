@@ -8,8 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.indexer;
-import org.firstinspires.ftc.teamcode.Subsystems.linear;
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
+import org.firstinspires.ftc.teamcode.Subsystems.Gate;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
@@ -19,7 +18,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.intake;
 public class exampleTeleOpFieldCentric extends OpMode {
 private intake intake;
 private indexer indexer;
-private shooter shooter;
+private Gate Gate;
 
 
 
@@ -35,7 +34,7 @@ private shooter shooter;
         follower = Constants.create(hardwareMap);
         intake = new intake(hardwareMap);
         indexer = new indexer(hardwareMap);
-        shooter = new shooter(hardwareMap);
+        Gate = new Gate(hardwareMap);
 
 
     }
@@ -70,13 +69,13 @@ private shooter shooter;
 
 
         if (gamepad2.rightTriggerWasPressed()) {
-            shooter.shooter1SetVelocity(1450);
-            shooter.shooter2SetVelocity(1450);
+            Gate.shooter1SetVelocity(1450);
+            Gate.shooter2SetVelocity(1450);
         }
 
         if (gamepad2.rightTriggerWasReleased()) {
-            shooter.shooter1SetVelocity(0);
-            shooter.shooter2SetVelocity(0);
+            Gate.shooter1SetVelocity(0);
+            Gate.shooter2SetVelocity(0);
         }
 
 
@@ -98,14 +97,14 @@ private shooter shooter;
 
         if (gamepad2.xWasPressed()) {
             telemetry.addLine("buttonPressed");
-            shooter.setServoPositionUp();
+            Gate.setServoPositionUp();
             indexer.indexerSetPower(1);}
 
 
 
             if (gamepad2.xWasReleased()) {
                 telemetry.addLine("buttonReleased");
-                shooter.setServoPositionDown();
+                Gate.setServoPositionDown();
                 indexer.indexerSetPower(0);
             }
 
@@ -115,8 +114,8 @@ private shooter shooter;
             Pose robotPose = follower.pose(); // returns a Pose object
             telemetry.addData("Robot X", robotPose.x());
             telemetry.addData("Robot Y", robotPose.y());
-            telemetry.addData("Shooter 1 Velocity", shooter.getOneShooterVelocity());
-            telemetry.addData("Shooter 2 Velocity", shooter.getTwoShooterVelocity());
+            telemetry.addData("Shooter 1 Velocity", Gate.getOneShooterVelocity());
+            telemetry.addData("Shooter 2 Velocity", Gate.getTwoShooterVelocity());
             telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
             telemetry.update();
         }}
