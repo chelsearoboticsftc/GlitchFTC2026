@@ -40,6 +40,7 @@ private shooter shooter;
 
     }
     @SuppressLint("SuspiciousIndentation")
+
     @Override
     public void loop() {
         DrivePowers powers = ManualDrive.fieldCentric(
