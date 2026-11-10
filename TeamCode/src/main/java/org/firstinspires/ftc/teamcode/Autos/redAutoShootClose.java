@@ -20,7 +20,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.OpModeStorage;
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
+import org.firstinspires.ftc.teamcode.Subsystems.Gate;
 
 
 
@@ -29,7 +29,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 public class redAutoShootClose extends OpMode {
 
     private Follower follower;
-    private shooter shooter;
+    private Gate Gate;
     private intake intake;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
@@ -76,7 +76,7 @@ public class redAutoShootClose extends OpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
-        shooter = new shooter(hardwareMap);
+        Gate = new Gate(hardwareMap);
         intake = new intake(hardwareMap);
     }
     @Override
