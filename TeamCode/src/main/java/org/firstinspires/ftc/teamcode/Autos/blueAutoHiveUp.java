@@ -9,7 +9,6 @@ import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
 
 import com.pedropathing.api.Paths;
-import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.api.PoseFactory;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.ivy.Command;
@@ -20,16 +19,16 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter;
 import org.firstinspires.ftc.teamcode.Subsystems.indexer;
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 
 
 @Autonomous
-public class blueAutoShootFar extends OpMode {
+public class blueAutoHiveUp extends OpMode {
     private Follower follower;
-    private shooter shooter;
+    private Shooter shooter;
     private intake intake;
     private indexer indexer;
     private final PoseFactory poseFactory = PoseFactory.degrees();
@@ -60,7 +59,7 @@ public class blueAutoShootFar extends OpMode {
 
                 instant(()-> shooter.shooter1SetVelocity(1435)),
                 instant(()-> shooter.shooter2SetVelocity(1435)),
-                waitMs(4000),
+                waitMs(5000),
                 instant(()-> indexer.indexerSetPower(1)),
                 instant(()-> shooter.setServoPositionUp()),
                 waitMs(5000),
@@ -73,7 +72,7 @@ public class blueAutoShootFar extends OpMode {
                 waitMs(100),
                 instant(() -> intake.intakeSetPower(1)),
                 instant(()-> indexer.indexerSetPower(1)),
-                waitMs(100),
+                waitMs(1000),
                 follow(follower, path2()),
                 follow(follower, path3()));
 
@@ -86,7 +85,7 @@ public class blueAutoShootFar extends OpMode {
         follower = Constants.create(hardwareMap);
         follower.setPose(start);//sets the starting point of your Robot
         follower.update();
-        shooter = new shooter(hardwareMap);
+        shooter = new Shooter(hardwareMap);
         indexer = new indexer(hardwareMap);
         intake = new intake(hardwareMap);
     }

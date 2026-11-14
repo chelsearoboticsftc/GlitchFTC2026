@@ -7,19 +7,19 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter;
 import org.firstinspires.ftc.teamcode.Subsystems.indexer;
-import org.firstinspires.ftc.teamcode.Subsystems.linear;
-import org.firstinspires.ftc.teamcode.Subsystems.shooter;
 import org.firstinspires.ftc.teamcode.pedro.Constants;
 import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
+import org.firstinspires.ftc.teamcode.Subsystems.shooterConstants;
 
 @TeleOp(name = "FieldCentric TeleOp")
 public class exampleTeleOpFieldCentric extends OpMode {
 private intake intake;
 private indexer indexer;
-private shooter shooter;
+private Shooter shooter;
 
 
 
@@ -35,7 +35,7 @@ private shooter shooter;
         follower = Constants.create(hardwareMap);
         intake = new intake(hardwareMap);
         indexer = new indexer(hardwareMap);
-        shooter = new shooter(hardwareMap);
+        shooter = new Shooter(hardwareMap);
 
 
     }
@@ -94,7 +94,9 @@ private shooter shooter;
         }
 
         if (gamepad2.leftBumperWasReleased()) {
-            intake.setServoPositionUp();}
+            intake.setServoPositionUp();
+
+        }
 
 
         if (gamepad2.xWasPressed()) {

@@ -4,22 +4,20 @@ import static org.firstinspires.ftc.teamcode.Subsystems.shooterConstants.leftGat
 import static org.firstinspires.ftc.teamcode.Subsystems.shooterConstants.rightGateDown;
 import static org.firstinspires.ftc.teamcode.Subsystems.shooterConstants.rightGateUp;
 
-import android.health.connect.datatypes.units.Velocity;
-
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import org.firstinspires.ftc.teamcode.Subsystems.shooterConstants;
 
-public class shooter {
+public class Shooter {
 
     DcMotorEx shooterOne;
     DcMotorEx shooterTwo;
     Servo shooterGateLeft;
     Servo shooterGateRight;
 
-    public shooter(HardwareMap hardwareMap) {
+    public Shooter(HardwareMap hardwareMap) {
 
         this.shooterOne = hardwareMap.get(DcMotorEx.class, "shooterOne");
         this.shooterOne.setZeroPowerBehavior(shooterConstants.SHOOTER_ZERO_POWER_BEHAVIOR);
