@@ -13,13 +13,12 @@ import org.firstinspires.ftc.teamcode.pedro.Constants;
 import com.pedropathing.drivetrain.DrivePowers;
 import com.pedropathing.follower.ManualDrive;
 import org.firstinspires.ftc.teamcode.Subsystems.intake;
-import org.firstinspires.ftc.teamcode.Subsystems.shooterConstants;
 
-@TeleOp(name = "FieldCentric TeleOp")
-public class exampleTeleOpFieldCentric extends OpMode {
-private intake intake;
-private indexer indexer;
-private Shooter shooter;
+@TeleOp(name = "Blue TeleOp")
+public class exampleTeleOpBlueFieldCentric extends OpMode {
+    private intake intake;
+    private indexer indexer;
+    private Shooter shooter;
 
 
 
@@ -53,6 +52,10 @@ private Shooter shooter;
         if (gamepad1.rightTriggerWasPressed()) {
             intake.intakeSetPower(1);
             indexer.indexerSetPower(1);
+        }
+        if(gamepad1.dpadUpWasPressed()){
+            follower.setHeading(Math.toRadians(180));
+            //Math.toRadians(degree)
         }
 
 
@@ -106,20 +109,21 @@ private Shooter shooter;
 
 
 
-            if (gamepad2.xWasReleased()) {
-                telemetry.addLine("buttonReleased");
-                shooter.setServoPositionDown();
-                indexer.indexerSetPower(0);
-            }
+        if (gamepad2.xWasReleased()) {
+            telemetry.addLine("buttonReleased");
+            shooter.setServoPositionDown();
+            indexer.indexerSetPower(0);
+        }
 
 
-            follower.manual(powers);
-            follower.update();
-            Pose robotPose = follower.pose(); // returns a Pose object
-            telemetry.addData("Robot X", robotPose.x());
-            telemetry.addData("Robot Y", robotPose.y());
-            telemetry.addData("Shooter 1 Velocity", shooter.getOneShooterVelocity());
-            telemetry.addData("Shooter 2 Velocity", shooter.getTwoShooterVelocity());
-            telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
-            telemetry.update();
-        }}
+        follower.manual(powers);
+        follower.update();
+        Pose robotPose = follower.pose(); // returns a Pose object
+        telemetry.addData("Robot X", robotPose.x());
+        telemetry.addData("Robot Y", robotPose.y());
+        telemetry.addData("Shooter 1 Velocity", shooter.getOneShooterVelocity());
+        telemetry.addData("Shooter 2 Velocity", shooter.getTwoShooterVelocity());
+        telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
+        telemetry.update();
+    }}
+

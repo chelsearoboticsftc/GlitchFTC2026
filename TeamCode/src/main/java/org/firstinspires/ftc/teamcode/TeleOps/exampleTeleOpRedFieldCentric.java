@@ -1,0 +1,137 @@
+package org.firstinspires.ftc.teamcode.TeleOps;
+import android.annotation.SuppressLint;
+
+import com.pedropathing.follower.Follower;
+import com.pedropathing.math.Pose;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.OpModeStorage;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter;
+import org.firstinspires.ftc.teamcode.Subsystems.indexer;
+import org.firstinspires.ftc.teamcode.pedro.Constants;
+import com.pedropathing.drivetrain.DrivePowers;
+import com.pedropathing.follower.ManualDrive;
+import org.firstinspires.ftc.teamcode.Subsystems.intake;
+
+@TeleOp(name = "Red TeleOp")
+public class exampleTeleOpRedFieldCentric extends OpMode {
+private intake intake;
+private indexer indexer;
+private Shooter shooter;
+
+
+
+
+    private Follower follower;
+    @Override
+    public void start(){
+        follower.setPose(OpModeStorage.autonomousEndPose);
+        follower.update();
+    }
+    @Override
+    public void init() {
+        follower = Constants.create(hardwareMap);
+        intake = new intake(hardwareMap);
+        indexer = new indexer(hardwareMap);
+        shooter = new Shooter(hardwareMap);
+
+
+    }
+    @SuppressLint("SuspiciousIndentation")
+
+    @Override
+    public void loop() {
+        DrivePowers powers = ManualDrive.fieldCentric(
+                -gamepad1.left_stick_y,
+                -gamepad1.left_stick_x,
+                -gamepad1.right_stick_x,
+                follower.pose().heading()
+        );
+
+        if (gamepad1.rightTriggerWasPressed()) {
+            intake.intakeSetPower(1);
+            indexer.indexerSetPower(1);
+        }
+        if(gamepad1.dpadUpWasPressed()){
+            follower.setHeading(Math.toRadians(0));
+            //Math.toRadians(degree)
+        }
+
+
+        if (gamepad1.rightTriggerWasReleased()) {
+            intake.intakeSetPower(0);
+            indexer.indexerSetPower(0);
+        }
+
+        if (gamepad2.yWasPressed()) {
+            indexer.indexerSetPower(1);
+        }
+
+        if (gamepad2.yWasReleased()) {
+            indexer.indexerSetPower(0);
+        }
+        if (gamepad2.aWasPressed()) {
+            indexer.indexerSetPower(-1);
+            intake.intakeSetPower(1);
+        }
+
+        if (gamepad2.aWasReleased()) {
+            indexer.indexerSetPower(0);
+            intake.intakeSetPower(0);
+        }
+
+
+        if (gamepad2.rightTriggerWasPressed()) {
+            shooter.shooter1SetVelocity(1450);
+            shooter.shooter2SetVelocity(1450);
+        }
+
+        if (gamepad2.rightTriggerWasReleased()) {
+            shooter.shooter1SetVelocity(0);
+            shooter.shooter2SetVelocity(0);
+        }
+
+
+        if (gamepad2.rightBumperWasPressed()) {
+            intake.setServoPositionUp();
+        }
+
+        if (gamepad2.rightBumperWasReleased()) {
+            intake.setServoPositionDown();
+        }
+
+        if (gamepad2.leftBumperWasPressed()) {
+            intake.setServoPositionDown();
+        }
+
+        if (gamepad2.leftBumperWasReleased()) {
+            intake.setServoPositionUp();
+
+        }
+
+
+        if (gamepad2.xWasPressed()) {
+            telemetry.addLine("buttonPressed");
+            shooter.setServoPositionUp();
+            indexer.indexerSetPower(1);}
+
+
+
+            if (gamepad2.xWasReleased()) {
+                telemetry.addLine("buttonReleased");
+                shooter.setServoPositionDown();
+                indexer.indexerSetPower(0);
+            }
+
+
+            follower.manual(powers);
+            follower.update();
+            Pose robotPose = follower.pose(); // returns a Pose object
+            telemetry.addData("Robot X", robotPose.x());
+            telemetry.addData("Robot Y", robotPose.y());
+            telemetry.addData("Shooter 1 Velocity", shooter.getOneShooterVelocity());
+            telemetry.addData("Shooter 2 Velocity", shooter.getTwoShooterVelocity());
+            telemetry.addData("Robot Heading", Math.toDegrees(robotPose.heading()));
+            telemetry.update();
+        }}
