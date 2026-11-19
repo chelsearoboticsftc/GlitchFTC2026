@@ -83,8 +83,8 @@ private Shooter shooter;
 
 
         if (gamepad2.rightTriggerWasPressed()) {
-            shooter.shooter1SetVelocity(1450);
-            shooter.shooter2SetVelocity(1450);
+            shooter.shooter1SetVelocity(-2850);
+            shooter.shooter2SetVelocity(1350);
         }
 
         if (gamepad2.rightTriggerWasReleased()) {

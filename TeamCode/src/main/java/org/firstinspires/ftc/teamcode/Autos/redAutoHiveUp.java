@@ -70,13 +70,12 @@ public class redAutoHiveUp extends OpMode {
 
     public Command autoRoutine() {
         return sequential(
-
                 instant(()-> shooter.shooter1SetVelocity(1435)),
                 instant(()-> shooter.shooter2SetVelocity(1435)),
                 waitMs(5000),
                 instant(()-> indexer.indexerSetPower(1)),
                 instant(()-> shooter.setServoPositionUp()),
-                waitMs(5000),
+                waitMs(3000),
                 instant(() -> shooter.shooter1SetVelocity(0)),
                 instant(() -> shooter.shooter2SetVelocity(0)),
                 instant(()-> shooter.setServoPositionDown()),

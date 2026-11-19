@@ -32,9 +32,9 @@ public class blueAutoHiveDown extends OpMode {
     private indexer indexer;
     private final PoseFactory poseFactory = PoseFactory.degrees();
 
-    private final Pose start = poseFactory.of(83.2955, 8.7346, 270);
+    private final Pose start = poseFactory.of(79.7403, 9.6826, 270);
     private final Pose path1 = poseFactory.of(83.0772, 20.4961, 270);
-    private final Pose point2 = poseFactory.of(132.4099, 20.5604, -179.9253);
+    private final Pose point2 = poseFactory.of(130.4446, 20.5604, -179.9222);
 
     public Path path1() {
         return Paths.line(start, path1).linear(start, path1);
@@ -46,8 +46,8 @@ public class blueAutoHiveDown extends OpMode {
     private Command autoRoutine() {
         return sequential(
                 waitMs(10000),
-                instant(() -> shooter.shooter1SetVelocity(1435)),
-                instant(() -> shooter.shooter2SetVelocity(1435)),
+                instant(() -> shooter.shooter1SetVelocity(-2850)),
+                instant(() -> shooter.shooter2SetVelocity(1340)),
                 waitMs(5000),
                 instant(()-> indexer.indexerSetPower(1)),
                 instant(()-> shooter.setServoPositionUp()),

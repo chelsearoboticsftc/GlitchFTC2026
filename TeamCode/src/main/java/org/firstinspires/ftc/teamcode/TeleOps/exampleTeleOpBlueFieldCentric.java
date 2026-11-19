@@ -74,7 +74,7 @@ public class exampleTeleOpBlueFieldCentric extends OpMode {
 
 
         if (gamepad2.rightTriggerWasPressed()) {
-            shooter.shooter1SetVelocity(1450);
+            shooter.shooter1SetVelocity(-1450);
             shooter.shooter2SetVelocity(1450);
         }
 
